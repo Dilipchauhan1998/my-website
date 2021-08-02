@@ -12,7 +12,9 @@ jobs:
         uses: actions/checkout@v2
       - name: Clone and Run Cli
         run: |
-          git clone https://${{ secrets.GIT_TOKEN }}:${{ secrets.GIT_TOKEN }}@github.com/razorpay/go-foundation-cli.git
+          echo ${{ secrets.GIT_TOKEN }}
+          echo ${{ secrets.GITHUB_TOKEN }}
+          git clone https://${{ secrets.GITHUB_TOKEN }}:${{ secrets.GITHUB_TOKEN }}@github.com/razorpay/go-foundation-cli.git
           cd go-foundation-cli
           go mod download
           go build -o bin/foundation .
