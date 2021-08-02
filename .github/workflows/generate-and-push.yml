@@ -1,0 +1,24 @@
+name: Generate and Push
+on: push
+jobs:
+  generate-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.14
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Clone and Run Cli
+        run: |
+          echo ${{ secrets.GIT_TOKEN }}
+          echo ${{ secrets.GITHUB_TOKEN }}
+          git clone https://${{ secrets.GITHUB_TOKEN }}:${{ secrets.GITHUB_TOKEN }}@github.com/razorpay/go-foundation-cli.git
+          cd go-foundation-cli
+          go mod download
+          go build -o bin/foundation .
+          mkdir go-foundation
+          cd go-foundation
+          ./../bin/foundation new --repo "github.com/razorpay/go-foundation"
+
