@@ -1,0 +1,11 @@
+name: Remote Dispatch Action Responder - Generate and Push
+on:
+  repository_dispatch:
+    types: generate_and_push
+jobs:
+  run-cli-and-push-generated-code:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Event Information
+        run: |
+          echo "Event '${{ github.event.action }}' received from '${{ github.event.client_payload.repository }}'"
