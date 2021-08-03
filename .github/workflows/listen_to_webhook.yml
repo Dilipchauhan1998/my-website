@@ -5,6 +5,7 @@ on:
 jobs:
   run-cli-and-push-generated-code:
     runs-on: ubuntu-latest
+    if: ${{ github.event.client_payload.repository }}=='Dilipchauhan1998/demo'
     steps:
       - name: Event Information
         run: |
