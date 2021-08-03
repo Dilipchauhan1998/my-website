@@ -5,8 +5,8 @@ on:
 jobs:
   run-cli-and-push-generated-code:
     runs-on: ubuntu-latest
-    if: github.event.client_payload.repository=='Dilipchauhan1998/demoa' && github.event.client_payload.ref=='refs/heads/master'
     steps:
       - name: Event Information
+        if: github.event.client_payload.repository == 'Dilipchauhan1998/demo' && github.event.client_payload.ref == 'refs/heads/master'
         run: |
           echo "Event '${{ github.event.action }}' received from '${{ github.event.client_payload.repository }}'"
